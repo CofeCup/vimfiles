@@ -1,2 +1,4 @@
 /bundle/**/.git/
+*.swp
+*~
 /install.cmd
