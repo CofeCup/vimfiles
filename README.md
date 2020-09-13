@@ -11,7 +11,7 @@ This git project contend:
     all the plugin & colorsheme vim files mentioned in the _vimrc
     a nerd font named "Droid Sans Mono Nerd Font"
 
-To use this vim configuration, five step is needed:
+To use this vim configuration, five steps are needed:
 
     (1) Make sure that you have python, modelsim, and git on your PC(if your work has nothing to do with python and verilog, you just need to install git)
 
@@ -31,16 +31,17 @@ To use this vim configuration, five step is needed:
 
 	(5) Run ":BundleInstall" in Vim shell line and wait utill the installation finished. Restart the Vim.
 
-    Enjoy your Vim time!!!
+Enjoy your Vim time!!!
 
-    Some function is hided in the _vimrc and you should dig for yourself! It is with sufficient comments and easy to read.
-    If you want to learn more vim knowledge in Chinese, I suggest two wedsites: 
-        https://vimjc.com 
-        https://github.com/vim-china
+Some function is hided in the _vimrc and you should dig by yourself! It is with sufficient comments and easy to read.
+If you want to learn more vim knowledge in Chinese, I suggest two wedsites: 
 
-	*****************************************************
-    * Remember: There is no such thing as a free lunch. *
-	*****************************************************
+    https://vimjc.com 
+    https://github.com/vim-china
+
+*****************************************************
+* Remember: There is no such thing as a free lunch. *
+*****************************************************
 
     Copyright (c) 2020 CofeCup
     ALL RIGHTS RESERVED
