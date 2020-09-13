@@ -1,0 +1,98 @@
+
+let $VIMFILES = "$VIMRUNTIME/vimfiles"
+
+" ====================== Vundle config ============================
+filetype off                  " required
+
+" set the runtime path to include Vundle and initialize
+set rtp+=$VIMFILES/bundle/Vundle.vim
+call vundle#begin()
+" alternatively, pass a path where Vundle should install plugins
+call vundle#begin('$VIMFILES/bundle/')
+
+" independent
+Plugin 'VundleVim/Vundle.vim'
+Plugin 'ervandew/supertab'
+Plugin 'scrooloose/nerdtree'
+Plugin 'ryanoasis/vim-devicons'
+Plugin 'morhetz/gruvbox'
+" Plugin 'vhda/verilog_systemverilog.vim'
+Plugin 'Xuyuanp/nerdtree-git-plugin'
+Plugin 'Lokaltog/vim-powerline'
+Plugin 'kien/ctrlp.vim'
+Plugin 'Yggdroot/indentLine'
+Plugin 'jiangmiao/auto-pairs'
+" Plugin 'kien/rainbow_parentheses.vim'
+Plugin 'python-mode/python-mode'
+
+" dependent
+
+" All of your Plugins must be added before the following line
+call vundle#end()            " required
+filetype plugin indent on    " required
+"
+" ====================== Supertab config ==========================
+
+let g:SuperTabDefaultCompletionType='context'
+
+" ====================== NERDTree config ==========================
+
+autocmd VimEnter * NERDTree
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+let NERDTreeWinPos="left"
+map<leader>t :NERDTreeToggle<CR>
+let NERDTreeAutoCenter=1
+let NERDTreeShowHidden=1
+let NERDTreeWinSize=30
+let g:nerdtree_tabs_open_on_console_startup=1
+let NERDTreeIgnore=['\.pyc','\~$','\.swp']
+let NERDTreeShowBookmarks=1
+let NERDTreeDirArrows=1
+let g:NERDTreeDirArrowExpandable='+'
+let g:NERDTreeDirArrowCollapsible='-'
+let NERDTreeMinimalUI=1
+
+" ====================== Gurvbox config ==========================
+
+set background=dark
+colorscheme gruvbox
+
+" " ====================== Rainbow Parentheses config ==========================
+" 
+" let g:rbpt_colorpairs = [
+"     \ ['brown',       'RoyalBlue3'],
+"     \ ['Darkblue',    'SeaGreen3'],
+"     \ ['darkgray',    'DarkOrchid3'],
+"     \ ['darkgreen',   'firebrick3'],
+"     \ ['darkcyan',    'RoyalBlue3'],
+"     \ ['darkred',     'SeaGreen3'],
+"     \ ['darkmagenta', 'DarkOrchid3'],
+"     \ ['brown',       'firebrick3'],
+"     \ ['gray',        'RoyalBlue3'],
+"     \ ['black',       'SeaGreen3'],
+"     \ ['darkmagenta', 'DarkOrchid3'],
+"     \ ['Darkblue',    'firebrick3'],
+"     \ ['darkgreen',   'RoyalBlue3'],
+"     \ ['darkcyan',    'SeaGreen3'],
+"     \ ['darkred',     'DarkOrchid3'],
+"     \ ['red',         'firebrick3'],
+"     \ ]
+" 
+" let g:rbpt_max = 16
+" 
+" let g:rbpt_loadcmd_toggle = 0
+" 
+" 
+" au VimEnter * RainbowParenthesesToggle
+" au Syntax * RainbowParenthesesLoadRound
+" au Syntax * RainbowParenthesesLoadSquare
+" au Syntax * RainbowParenthesesLoadBraces
+" 
+" ((((((((((((((((((((((()))))))))))))))))))))))
+
+" " ====================== Verilog Plugin config(deleted) ==========================
+" 
+" nnoremap <leader>u :VerilogGotoInstanceStart<CR>
+" nnoremap <leader>i :VerilogFollowInstance<CR>
+" nnoremap <leader>o :VerilogReturnInstance<CR>
+" nnoremap <leader>I :VerilogFollowPort<CR>

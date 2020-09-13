@@ -5,8 +5,6 @@
 
 " personal setting
 let $VIMFILES = "$VIMRUNTIME/vimfiles"
-" let $VIMRCDIR  = "$VIMRUNTIME"
-" let $MYVIM     = "/home/jkhuang/.vim"
 
 " leader
 let mapleader = ','
@@ -45,6 +43,7 @@ set paste
 " show location
 " set cursorcolumn
 set cursorline
+set guicursor+=a:blinkon0
 
 
 " movement
@@ -62,15 +61,16 @@ set showmatch                   " jump to matches when entering parentheses
 set matchtime=2                 " tenths of a second to show the matching parenthesis
 set showtabline=2
 set tabpagemax=20
+" used in Linux
 set lines=999 columns=999
-autocmd VimLeave * exec ":set lines=24 columns=80<CR>" "try to reset the window but failed
+" autocmd VimLeave * exec ":set lines=24 columns=80<CR>" "try to reset the window but failed
 
 " search
 set hlsearch                    " highlight searches
 set incsearch                   " do incremental searching, search as you type
 set ignorecase                  " ignore case when searching
 set smartcase                   " no ignorecase if Uppercase char present
-set path+=.,..,../src,../tb,../mat,../source,$VIMRUNTIME,
+set path+=.,..,../src,../tb,../mat,../source,$VIMRUNTIME,$VIMFILES,
 set tags+=./tags,../tags;
 set autochdir
 
@@ -109,6 +109,7 @@ set termencoding=utf-8
 set ffs=unix,dos,mac
 set formatoptions+=m
 set formatoptions+=B
+" to avoid error codes in win
 source $VIMRUNTIME/delmenu.vim
 source $VIMRUNTIME/menu.vim
 
@@ -136,6 +137,7 @@ endif
 
 " When .vimrc is edited, reload it
 " autocmd! bufwritepost .vimrc source ~/.vim/.vimrc
+" in win
 autocmd! bufwritepost _vimrc source $VIMFILES/_vimrc
 
 " ============================ theme and status line ============================
@@ -159,9 +161,9 @@ set laststatus=2   " Always show the status line - use 2 lines for the status ba
 " ============================ specific file type ===========================
 
 autocmd FileType python set tabstop=4 shiftwidth=4 expandtab ai
-autocmd FileType ruby set tabstop=2 shiftwidth=2 softtabstop=2 expandtab ai
-autocmd FileType verilog set tabstop=2 shiftwidth=2 softtabstop=2 expandtab ai tw=100
-autocmd FileType systemverilog set tabstop=2 shiftwidth=2 softtabstop=2 expandtab ai tw=100
+autocmd FileType ruby set tabstop=2 shiftwidth=2 expandtab ai
+autocmd FileType verilog set tabstop=2 shiftwidth=2 expandtab ai tw=100
+autocmd FileType systemverilog set tabstop=2 shiftwidth=2 expandtab ai tw=100
 autocmd BufRead,BufNew *.md,*.mkd,*.markdown  set filetype=markdown.mkd
 
 autocmd BufNewFile *.sh,*.py exec ":call AutoSetFileHead()"
@@ -198,8 +200,8 @@ func! RTLAutoSetFileHead()
     endif
     let company  = "TJ IClab" 
     let filename = expand("%")
-    let user     = system("echo $USER")
-    let user     = substitute(user, '\n', '','')
+    let user     = "jkhuang"
+    " let user     = substitute(user, '\n', '','')
     call setline(1,  "// -----------------------------------------------------------------")
     call append(line("."),  "//                 Copyright (c) ". strftime("%Y ") . company . ".")
     call append(line(".")+1,  "//                       ALL RIGHTS RESERVED")
@@ -279,8 +281,8 @@ nnoremap <silent> # #zz
 nnoremap <silent> g* g*zz
 
 " Open .vimrc quickly
-nnoremap <silent> <leader>ev :edit $VIMRCDIR/_vimrc<CR>
-nnoremap <silent> <leader>sv :source $VIMRCDIR/_vimrc<CR>
+nnoremap <silent> <leader>ev :edit $VIMFILES/_vimrc<CR>
+nnoremap <silent> <leader>sv :source $VIMFILES/_vimrc<CR>
 
 " remove highlight
 nnoremap <Esc> :noh<CR><Esc>
@@ -311,68 +313,50 @@ cnoremap <C-k> <t_ku>
 cnoremap <C-a> <Home>
 cnoremap <C-e> <End>
 
+" ============================ Compiling Config ============================
+
 " F5 running python
-map <F5> :call PRUN()<CR>
-func! PRUN()
+" map <F5> :call PRUN()<CR>
+" func! PRUN()
+"     exec "w"
+"     if &filetype == 'python'
+"         exec "!python %"
+"     endif
+" endfunc
+
+" using <F5> to compile current file
+" python: python in cmd
+" verilog & systemverilog: modelsim 
+map <F5> :call CompileFile()<CR>
+func! CompileFile()
+
     exec "w"
+
     if &filetype == 'python'
+
         exec "!python %"
+
+    elseif &filetype == 'verilog' || &filetype == 'systemverilog' || &filetype == 'verilog_systemverilog' 
+
+        " building the work folder
+        " exec "!vlib work"
+
+        " begin to compile
+        set makeprg =vlog\ %
+        set errorformat=\*\*\ %tARNING:\ %f(%l):\ (vlog-%n)\ %m,\*\*\ %tRROR:\ %f(%l):\ (vlog-%n)\ %m,\*\*\ %tARNING:\ (vlog-%n)\ %f(%l):\ %m,\*\*\ %tRROR:\ (vlog-%n)\ %f(%l):\ %m,\*\*\ %tRROR:\ %f(%l):\ %m,\*\*\ %tRROR:\ %m,\*\*\ %tARNING:\ %m,\*\*\ %tOTE:\ %m,%tRROR:\ %f(%l):\ %m,%tARNING\[%*[0-9]\]:\ %f(%l):\ %m,%tRROR:\ %m,%tARNING\[%*[0-9]\]:\ %m
+        execute ":make"
+        execute ":cw"
+        
+    else
+
+        echohl ErrorMsg
+        echo "This filetype can't be compiled through vim yet!!! Pls contact jkhuang via email 2030826@tongji.edu.cn "
+        echohl None
+
     endif
+
 endfunc
 
-" ====================== Vundle config ============================
-filetype off                  " required
+" ============================ Plugin Config ============================
 
-" set the runtime path to include Vundle and initialize
-set rtp+=$VIMFILES/bundle/Vundle.vim
-call vundle#begin()
-" alternatively, pass a path where Vundle should install plugins
-call vundle#begin('$VIMFILES/bundle/')
-
-" let Vundle manage Vundle, required
-Plugin 'VundleVim/Vundle.vim'
-Plugin 'ervandew/supertab'
-Plugin 'scrooloose/nerdtree'
-Plugin 'ryanoasis/vim-devicons'
-Plugin 'morhetz/gruvbox'
-Plugin 'vhda/verilog_systemverilog.vim'
-Plugin 'Xuyuanp/nerdtree-git-plugin'
-Plugin 'Lokaltog/vim-powerline'
-Plugin 'kien/ctrlp.vim'
-Plugin 'Yggdroot/indentLine'
-Plugin 'jiangmiao/auto-pairs'
-Plugin 'kien/rainbow_parentheses.vim'
-
-" All of your Plugins must be added before the following line
-call vundle#end()            " required
-filetype plugin indent on    " required
-"
-" ====================== Supertab config ==========================
-
-let g:SuperTabDefaultCompletionType='context'
-
-" ====================== NERDTree config ==========================
-
-autocmd VimEnter * NERDTree
-autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
-let NERDTreeWinPos="left"
-map<leader>t :NERDTreeToggle<CR>
-let NERDTreeAutoCenter=1
-let NERDTreeShowHidden=1
-let NERDTreeWinSize=30
-let g:nerdtree_tabs_open_on_console_startup=1
-let NERDTreeIgnore=['\.pyc','\~$','\.swp']
-let NERDTreeShowBookmarks=1
-let NERDTreeDirArrows=1
-let g:NERDTreeDirArrowExpandable='+'
-let g:NERDTreeDirArrowCollapsible='-'
-let NERDTreeMinimalUI=1
-
-" ====================== Gurvbox config ==========================
-
-set background=dark
-colorscheme gruvbox
-
-" ====================== Gurvbox config ==========================
-
-
+source $VIMFILES/vimrc_plugin
