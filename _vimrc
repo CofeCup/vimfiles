@@ -248,7 +248,7 @@ inoremap kj <Esc>
 
 " Auto complete blanket
 inoremap ( ()<Left>
-inoremap < <><Left>
+" inoremap < <><Left>
 inoremap { {}<Left>
 inoremap [ []<Left>
 
@@ -282,6 +282,7 @@ nnoremap <silent> g* g*zz
 
 " Open .vimrc quickly
 nnoremap <silent> <leader>ev :edit $VIMFILES/_vimrc<CR>
+nnoremap <silent> <leader>ep :edit $VIMFILES/vimrc_plugin<CR>
 nnoremap <silent> <leader>sv :source $VIMFILES/_vimrc<CR>
 
 " remove highlight
@@ -314,6 +315,9 @@ cnoremap <C-a> <Home>
 cnoremap <C-e> <End>
 
 " ============================ Compiling Config ============================
+"
+" add python3.8 support in Vim
+let &pythonthreedll='C:\Users\CofeCup\AppData\Local\Programs\Python\Python38-32\python38.dll'
 
 " F5 running python
 " map <F5> :call PRUN()<CR>

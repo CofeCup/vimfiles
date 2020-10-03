@@ -24,6 +24,10 @@ Plugin 'Yggdroot/indentLine'
 Plugin 'jiangmiao/auto-pairs'
 " Plugin 'kien/rainbow_parentheses.vim'
 Plugin 'python-mode/python-mode'
+Plugin 'lervag/vimtex'
+Plugin 'sirver/ultisnips'
+Plugin 'honza/vim-snippets'
+"Plugin 'KeitaNakamura/tex-conceal.vim'
 
 " dependent
 
@@ -96,3 +100,83 @@ colorscheme gruvbox
 " nnoremap <leader>i :VerilogFollowInstance<CR>
 " nnoremap <leader>o :VerilogReturnInstance<CR>
 " nnoremap <leader>I :VerilogFollowPort<CR>
+"
+" " ====================== Vimtex Plugin config ==========================
+let g:tex_flavor='latex'
+
+" let g:vimtex_view_method='zathura' "linux
+let g:vimtex_view_method='general' "wondows(default)
+let g:vimtex_view_general_viewer='SumatraPDF'
+" let g:vimtex_view_general_options
+"     \ = '-reuse-instance -forward-search @tex @line @pdf'
+" let g:vimtex_view_general_options_latexmk = '-reuse-instance'
+" let g:vimtex_view_general_options
+"     \ = '-reuse-instance -forward-search @tex @line @pdf'
+"     \ . ' -inverse-search "' . exepath(v:progpath)
+"     \ . ' --servername ' . v:servername
+"     \ . ' --remote-send \"^<C-\^>^<C-n^>'
+"     \ . ':execute ''drop '' . fnameescape(''\%f'')^<CR^>'
+"     \ . ':\%l^<CR^>:normal\! zzzv^<CR^>'
+"     \ . ':call remote_foreground('''.v:servername.''')^<CR^>^<CR^>\""'
+
+
+let g:vimtex_quickfix_mode=0
+set conceallevel=0 "hide nothing
+let g:tex_conceal=''
+" let g:tex_conceal='abdmg'
+let g:vimtex_compiler_latexmk = {
+    \ 'build_dir' : './latexmk/',
+    \ 'callback' : 1,
+    \ 'continuous' : 1,
+    \ 'executable' : 'latexmk',
+    \ 'hooks' : [],
+    \ 'options' : [
+    \   '-verbose',
+    \   '-file-line-error',
+    \   '-synctex=1',
+    \   '-interaction=nonstopmode',
+    \ ],
+    \}
+let g:vimtex_compiler_latexmk_engines = {
+    \ '_'                : '-xelatex',
+    \ 'pdflatex'         : '-pdf',
+    \ 'dvipdfex'         : '-pdfdvi',
+    \ 'lualatex'         : '-lualatex',
+    \ 'xelatex'          : '-xelatex',
+    \ 'context (pdftex)' : '-pdf -pdflatex=texexec',
+    \ 'context (luatex)' : '-pdf -pdflatex=context',
+    \ 'context (xetex)'  : '-pdf -pdflatex=''texexec --xtx''',
+    \}
+let g:vimtex_compiler_latexrun_engines = {
+    \ '_'                : 'xelatex',
+    \ 'pdflatex'         : 'pdflatex',
+    \ 'lualatex'         : 'lualatex',
+    \ 'xelatex'          : 'xelatex',
+    \}
+
+" " ====================== UltiSnips Plugin config ==========================
+" make YCM compatible with UltiSnips (using supertab)
+let g:ycm_key_list_select_completion = ['<C-n>', '<Down>']
+let g:ycm_key_list_previous_completion = ['<C-p>', '<Up>']
+let g:SuperTabDefaultCompletionType = '<C-n>'
+
+let g:UltiSnipsExpandTrigger = '<tab>'
+let g:UltiSnipsListSnippets = '<c-tab>'
+let g:UltiSnipsJumpForwardTrigger = '<tab>'
+let g:UltiSnipsJumpBackwardTrigger = '<s-tab>'
+
+let g:UltiSnipsEditSplit='vertical'
+let g:UltiSnipsSnippetDirectories=["D:\Vim\vim82\vimfiles\mysnippets","UltiSnips"]
+
+
+
+" The default value for g:UltiSnipsJumpBackwardTrigger interferes with the
+" built-in complete function: |i_CTRL-X_CTRL-K|. A workaround is to add the
+" following to your vimrc file or switching to a plugin like Supertab or
+" YouCompleteMe.
+inoremap <c-x><c-k> <c-x><c-k>
+
+" ====================== tex-conceal Plugin config ==========================
+" set conceallevel=1
+" let g:tex_conceal='abdmg'
+" hi Conceal ctermbg=none

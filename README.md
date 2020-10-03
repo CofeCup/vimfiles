@@ -1,19 +1,22 @@
 This Gvim configuration rely on the following tools to give full play to all functions:
 
     git 
-    python
-    modelsim
-    Windows system
+    python3
+    modelsim(10.5 is better)
+	texlive(2020)
+	SumatraPDF(v3.2)
+	latexmk(update to 4.70a)
 
 This git project contend:
 
     _vimrc for windows
-    all the plugin & colorsheme vim files mentioned in the _vimrc
+	Vundle plugin
     a nerd font named "Droid Sans Mono Nerd Font"
+	snippets for fast latex writing
 
 To use this vim configuration, five steps are needed:
 
-    (1) Make sure that you have python, modelsim, and git on your PC(if your work has nothing to do with python and verilog, you just need to install git). 
+    (1) Make sure that you have all the tools mentioned above on your PC(if your work has nothing to do with latex and verilog, you just need to install git and python3). 
 
     (2) In cmd, excuting the following command:
 
@@ -32,7 +35,13 @@ To use this vim configuration, five steps are needed:
 
     (4) Install the font using "Droid Sans Mono Nerd Font Complete Mono Windows Compatible.otf". Just double click it and you will know : )
 
-	(5) Run ":BundleInstall" in Vim shell line and wait utill the installation finished. Restart the Gvim.
+	(5) Run ":BundleInstall" in Vim shell line and wait utill the installation finished.
+
+	(6) If needed, change the python3 path using:
+
+		let &pythonthreedll='PATH to python38.dll'
+
+	(7) Restart the Gvim.
 
 Enjoy your Vim time!!!
 
