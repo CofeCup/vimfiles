@@ -368,7 +368,7 @@ cnoremap <C-e> <End>
 " ============================ Compiling Config ============================
 "
 " add python3.8 support in Vim
-let &pythonthreedll='C:\Users\CofeCup\AppData\Local\Programs\Python\Python38-32\python38.dll'
+let &pythonthreedll='C:\Users\CofeCup\AppData\Local\Programs\Python\Python38-32\python38.dll' 
 
 " F5 running python
 " map <F5> :call PRUN()<CR>

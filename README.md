@@ -1,11 +1,11 @@
 This Gvim configuration rely on the following tools to give full play to all functions:
 
-[git](https://git-scm.com/). The [Pro Git](https://git-scm.com/book/zh/v2) book on the website is very good!
-python3([Anaconda](https://docs.anaconda.com/anaconda/install/windows/)is recommended, but other version works well too)
-modelsim([10.5](https://pan.baidu.com/s/1DH2bGxgQMriJYxdRYSIHFw) is recommended, passward: Cofe)
-TeX Live(2020)(In China, it is recommended to download from [CTAN of tsinghua](https://mirrors.tuna.tsinghua.edu.cn/CTAN/systems/mac/mactex/MacTeX.pkg))
-SumatraPDF(v3.2)(But [pre-release build](https://www.sumatrapdfreader.org/prerelease.html) is recommended because it supports annotation)
-latexmk(update to 4.70a)(Using Tex Live Manager embedded in texlive to update)
+- [git](https://git-scm.com/). The [Pro Git](https://git-scm.com/book/zh/v2) book on the website is very good!
+- python3([Anaconda](https://docs.anaconda.com/anaconda/install/windows/)is recommended, but other version works well too)
+- modelsim([10.5](https://pan.baidu.com/s/1DH2bGxgQMriJYxdRYSIHFw) is recommended, passward: Cofe)
+- TeX Live(2020)(In China, it is recommended to download from [CTAN of tsinghua](https://mirrors.tuna.tsinghua.edu.cn/CTAN/systems/mac/mactex/MacTeX.pkg))
+- SumatraPDF(v3.2)(But [pre-release build](https://www.sumatrapdfreader.org/prerelease.html) is recommended because it supports annotation)
+- latexmk(update to 4.70a)(Using Tex Live Manager embedded in texlive to update)
 
 This git project contend:
 
