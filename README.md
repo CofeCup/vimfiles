@@ -22,12 +22,12 @@ To use this vim configuration, some steps are needed:
 1. Make sure that you have all the tools mentioned above on your PC(if your work has nothing to do with latex and verilog, you just need to install git and python3). 
 
 2. In cmd, excuting the following command:
-'''
-$ cd /d [path to the install folder of Gvim(normally we call it $VIMRUNTIME)]
+
+'$ cd /d [path to the install folder of Gvim(normally we call it $VIMRUNTIME)]
+
 (eg. cd /d D:\Vim\vim82, and you can use ":echo $VIMRUNTIME" in Gvim to check your Gvim folder path. If your path contains blank space, you should put Double quotation marks("") outside yout path)
 
-$ git clone https://github.com/CofeCup/vimfiles --recurse-submodules
-'''
+$ git clone https://github.com/CofeCup/vimfiles --recurse-submodules'
 
 3. Enter the folder under the $HOME path(normally "C:\Users\[Username]") and find a file named "_vimrc". (If it is not existed, pls create one.) Add the following command to _vimrc:
 
