@@ -42,7 +42,7 @@ To use this vim configuration, some steps are needed:
 
 	(6) If needed, change the python3 path using:
 
-		let &pythonthreedll=[PATH to python38.dll]
+		let &pythonthreedll=[PATH to python38.dll(**32-bit**)]
 
 	(7) Restart the Gvim.
 
