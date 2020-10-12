@@ -22,13 +22,21 @@ To use this vim configuration, some steps are needed:
 1. Make sure that you have all the tools mentioned above on your PC(if your work has nothing to do with latex and verilog, you just need to install git and python3). 
 
 2. In cmd, excuting the following command:
+
 		$ cd /d [path to the install folder of Gvim(normally we call it $VIMRUNTIME)]
+
 (For example, cd /d D:\Vim\vim82, and you can use ":echo $VIMRUNTIME" in Gvim to check your Gvim folder path. If your path contains blank space, you should put Double quotation marks("") outside yout path)
+
+
 		$ git clone https://github.com/CofeCup/vimfiles --recurse-submodules
 
 3. Enter the folder under the $HOME path(normally "C:\Users\[Username]") and find a file named "_vimrc". (If it is not existed, pls create one.) Add the following command to _vimrc:
+
 		source [$VIMRUNTIME\vimfiles\_vimrc]
+
 For example:
+
+
 		source D:\Vim\vim82\vimfiles\_vimrc
 
 4. Install the font using "Droid Sans Mono Nerd Font Complete Mono Windows Compatible.otf". Just double click it and you will know : )
@@ -36,7 +44,9 @@ For example:
 5. Run ":BundleInstall" in Vim shell line and wait utill the installation finished.
 
 6. If needed, change the python3 path using:
+
 		let &pythonthreedll=[PATH to python38.dll(32-bit)]
+
 7. Restart the Gvim.
 
 If you want to use the snippet config, just cope the folder UltiSnips and paste it into ./bundle/ultisnips. After that, restart GVim. 
