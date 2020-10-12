@@ -166,6 +166,55 @@ autocmd FileType verilog set tabstop=2 shiftwidth=2 expandtab ai tw=100
 autocmd FileType systemverilog set tabstop=2 shiftwidth=2 expandtab ai tw=100
 autocmd BufRead,BufNew *.md,*.mkd,*.markdown  set filetype=markdown.mkd
 
+autocmd BufNewFile *.tex exec ":call TexAutoSetFileHead()"
+function! TexAutoSetFileHead()
+	" tex
+	call setline(1, "%! TEX program = 'xelatex'")
+	call setline(2, "\\documentclass[UTF8]{article}")
+	call setline(2+1, "\\usepackage{amsmath} % math fomula")
+	call setline(2+2, "\\usepackage{amssymb} % math fomula")
+	call setline(2+3, "\\usepackage{amsfonts}% math fonts")
+	call setline(2+4, "\\usepackage{upgreek} ")
+	call setline(2+5, "\\usepackage{bm} % bold math fomula")
+	call setline(2+6, "\\usepackage{xfrac} % frac in line")
+	call setline(2+7, "\\usepackage{graphicx} % intsert picture")
+	call setline(2+8, "\\usepackage{geometry} % page margins ")
+	call setline(2+9, "\\usepackage{fancyhdr} % header and foot")
+	call setline(2+10, "\\usepackage{setspace} % line distance")
+	call setline(2+11, "\\usepackage{ctex}")
+	call setline(2+12, "\\usepackage{caption} %Chinese and English caption")
+	call setline(2+13, "")
+	call setline(2+14, "%\\ctexset{today=old}")
+	call setline(2+15, "%\captionsetup{labelformat=default, labelsep=space}")
+	call setline(2+16, "")	
+	call setline(2+17, "\\title{}")
+	call setline(2+18, "\\author{黄键坤 2030826}")
+	call setline(2+19, "\\date{\\today}")
+	call setline(2+20, "")
+	call setline(2+21, "\\pagestyle{fancy}")
+	call setline(2+22, "\\lhead{黄键坤 2030826}")
+	call setline(2+23, "\\chead{\\bfseries Machine Learning$\quad$Assignment1}")
+	call setline(2+24, "\\rhead{\\today}")
+	call setline(2+25, "\\lfoot{}")
+	call setline(2+26, "\\cfoot{\\thepage}")
+	call setline(2+27, "\\rfoot{}")
+	call setline(2+28, "\\renewcommand{\\headrulewidth}{0.4pt}")
+	call setline(2+29, "%\\renewcommand{\\headwidth}{\\textwidth}")
+	call setline(2+30, "\\renewcommand{\\footrulewidth}{0pt}")
+	call setline(2+31, "\\onehalfspacing")
+	call setline(2+32, "")
+	call setline(2+33, "\\begin{document}")
+	call setline(2+34, "")
+	call setline(2+35, "    \\maketitle")
+	call setline(2+36, "")
+	call setline(2+37, "\\end{document}")
+
+    " normal G
+    " normal k
+    " normal k
+    " normal o
+endfunc
+
 autocmd BufNewFile *.sh,*.py exec ":call AutoSetFileHead()"
 function! AutoSetFileHead()
     " .sh
@@ -179,9 +228,11 @@ function! AutoSetFileHead()
         call append(1, "\# encoding: utf-8")
     endif
 
-    normal G
+
+	normal G
     normal o
     normal o
+
 endfunc
 
 autocmd FileType c,cpp,java,go,php,javascript,puppet,python,rust,twig,xml,yml,perl autocmd BufWritePre <buffer> :call <SID>StripTrailingWhitespaces()
