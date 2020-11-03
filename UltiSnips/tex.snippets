@@ -148,11 +148,11 @@ snippet unLi "underline" iA
 endsnippet
 
 snippet tbf "textbf" i
-\textbf{${VISUAL}}$0
+\textbf{$1}\ $0
 endsnippet
 
 snippet tbf "textbf" bA
-\textbf{$1}$0
+\textbf{$1}\ $0
 endsnippet
 	
 snippet pg "paragraph" bA
@@ -199,7 +199,7 @@ snippet NI "resetve in" iA
 \ni
 endsnippet
 	
-snippet ... "cdots" iA
+snippet ...  "cdots" iA
 \cdots
 endsnippet
 
@@ -227,11 +227,11 @@ snippet \bal "bmalpha" iA
 \bm{\alpha}
 endsnippet
 
-snippet "ser([a-zA-Z])bal" "serial bold alpha from 1 to ?" riA
+snippet "ser([a-zA-Z1-9])bal" "serial bold alpha from 1 to ?" riA
 \bm{\alpha}_1, \bm{\alpha}_2, \cdots, \bm{\alpha}_{`!p snip.rv=match.group(1)`}
 endsnippet
 
-snippet "ser([a-zA-Z])mbal" "serial bold alpha from 1 to ?" riA
+snippet "ser([a-zA-Z1-9])mbal" "serial bold alpha from 1 to ?" riA
  $\bm{\alpha}_1, \bm{\alpha}_2, \cdots, \bm{\alpha}_{`!p snip.rv=match.group(1)`}$ 
 endsnippet
 
@@ -251,12 +251,28 @@ snippet \mbbe "mbmbeta" iA
  $\bm{\beta}$1$$0 
 endsnippet
 
-snippet "ser([a-zA-Z])bbe" "serial bold beta from 1 to ?" riA
+snippet "ser([a-zA-Z1-9])bbe" "serial bold beta from 1 to ?" riA
 \bm{\beta}_1, \bm{\beta}_2, \cdots, \bm{\beta}_{`!p snip.rv=match.group(1)`}
 endsnippet
 
-snippet "ser([a-zA-Z])mbbe" "serial bold beta from 1 to ?" riA
+snippet "ser([a-zA-Z1-9])mbbe" "serial bold beta from 1 to ?" riA
  $\bm{\beta}_1, \bm{\beta}_2, \cdots, \bm{\beta}_{`!p snip.rv=match.group(1)`}$ 
+endsnippet
+
+snippet \Vep "varepsilon" iA
+\varepsilon
+endsnippet
+
+snippet \bVep "bmvarepsilon" iA
+\bm{\varepsilon}
+endsnippet
+
+snippet "ser([a-zA-Z1-9])bVep" "serial bold varepsilon from 1 to ?" riA
+\bm{\varepsilon}_1, \bm{\varepsilon}_2, \cdots, \bm{\varepsilon}_{`!p snip.rv=match.group(1)`}
+endsnippet
+
+snippet "ser([a-zA-Z1-9])mbVep" "serial bold varepsilon from 1 to ?" riA
+ $\bm{\varepsilon}_1, \bm{\varepsilon}_2, \cdots, \bm{\varepsilon}_{`!p snip.rv=match.group(1)`}$ 
 endsnippet
 
 snippet \it "eta" iA
@@ -283,20 +299,76 @@ snippet \la "lambda" iA
 \lambda
 endsnippet
 
+snippet \La "varLambda" iA
+\varLambda
+endsnippet
+
+snippet \ga "gamma" iA
+\gamma
+endsnippet
+
+snippet \bga "gamma" iA
+\bm{\gamma}
+endsnippet
+
+snippet \bxi "\xi" iA
+\bm{\xi}
+endsnippet
+
 snippet <> "l/r angle" iA
 \langle$1\rangle$0
+endsnippet
+
+snippet \vnorm "norm of vector" iA
+\|$1\|^{2}$0
+endsnippet
+
+snippet \subs "" iA
+\subseteq 
+endsnippet
+
+snippet \sups "" iA
+\supseteq 
 endsnippet
 
 snippet mbA "bm{A}" iA
  $\bm{A}$ 
 endsnippet
 
+snippet AA "\mathscr{A}" iA
+\mathscr{A}
+endsnippet
+
+snippet mA "\mathscr{A}" iA
+ $\mathscr{A}$ 
+endsnippet
+
 snippet mbB "bm{B}" iA
  $\bm{B}$ 
 endsnippet
 
+snippet mbC "bm{C}" iA
+ $\bm{C}$ 
+endsnippet
+
+snippet CC "\mathscr{C}" iA
+\mathbb{C}
+endsnippet
+
 snippet mbF "$F$" iA
  $\bm{F}$ 
+endsnippet
+
+snippet FF "\mathscr{F}" iA
+\mathscr{F}
+endsnippet
+
+snippet "ser([a-zA-Z1-9])be" "serial bold e from 1 to ?" riA
+\bm{e}_1, \bm{e}_2, \cdots, \bm{e}_{`!p snip.rv=match.group(1)`}
+endsnippet
+
+snippet "ser([a-zA-Z1-9])mbe" "serial bold e from 1 to ?" riA
+ $\bm{e}_1, \bm{e}_2, \cdots, \bm{e}_{`!p snip.rv=match.group(1)`}$ 
 endsnippet
 
 snippet mE "$E$" iA
@@ -333,6 +405,22 @@ endsnippet
 
 snippet mbV "$V$" iA
  $\bm{V}$ 
+endsnippet
+
+snippet "ser([a-zA-Z1-9])V" "serial V from 1 to ?" riA
+V_1, V_2, \cdots, V_{`!p snip.rv=match.group(1)`}
+endsnippet
+
+snippet "ser([a-zA-Z1-9])mV" "serial V from 1 to ?" riA
+ $V_1, V_2, \cdots, V_{`!p snip.rv=match.group(1)`}$ 
+endsnippet
+
+snippet "ser([a-zA-Z1-9])bv" "serial bold v from 1 to ?" riA
+\bm{v}_1, \bm{v}_2, \cdots, \bm{v}_{`!p snip.rv=match.group(1)`}
+endsnippet
+
+snippet "ser([a-zA-Z1-9])mbV" "serial bold V from 1 to ?" riA
+ $\bm{V}_1, \bm{V}_2, \cdots, \bm{V}_{`!p snip.rv=match.group(1)`}$ 
 endsnippet
 
 snippet mbw "$w$" iA
@@ -375,10 +463,6 @@ snippet \nlsum "sumnolimits" iA
 \sum\nolimits^{$1}_{$2}$0
 endsnippet
 
-snippet . ".\quad" i
-.\quad
-endsnippet
-	
 snippet RR "mathbb R" iA
 \mathbb{R}
 endsnippet
@@ -389,4 +473,66 @@ snippet cas "Cases" bA
 \end{cases}
 $0
 endsnippet
+
+snippet pm "pmatrix" bA
+\begin{pmatrix}
+	$1
+\end{pmatrix}
+$0
+endsnippet
+
+snippet vm "vmatrix" bA
+\begin{vmatrix}
+	$1
+\end{vmatrix}
+$0
+endsnippet
+
+snippet , "append space behind comma" iA
+, 
+endsnippet
+
+snippet ( "blanket complete" iA
+($1) $0
+endsnippet
+
+snippet ( "blanket complete" bA
+($1) $0
+endsnippet
+
+snippet \{ "big blanket" iA
+\\\{$1\\\}$0
+endsnippet
+
+snippet : "description" iA
+: 
+endsnippet
+	
+snippet \in "sapce append" iA
+\in 
+endsnippet
+
+snippet \geq "space append" iA
+\geq 
+endsnippet
+
+snippet \neq "space append" iA
+\neq 
+endsnippet
+
+snippet \cap "space append" iA
+\cap 
+endsnippet
+
+snippet \cup "space append" iA
+\cup 
+endsnippet
+
+snippet \to "space append" iA
+\to 
+endsnippet
+
+
+	
+	
 	

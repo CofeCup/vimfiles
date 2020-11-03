@@ -64,6 +64,14 @@ set tabpagemax=20
 " used in Linux
 set lines=999 columns=999
 " autocmd VimLeave * exec ":set lines=24 columns=80<CR>" "try to reset the window but failed
+" no manu and tool list
+set guioptions-=m
+set guioptions-=T
+" no rowing bar
+set guioptions-=l
+set guioptions-=L
+set guioptions-=r
+set guioptions-=R
 
 " search
 set hlsearch                    " highlight searches
@@ -164,7 +172,7 @@ autocmd FileType python set tabstop=4 shiftwidth=4 expandtab ai
 autocmd FileType ruby set tabstop=2 shiftwidth=2 expandtab ai
 autocmd FileType verilog set tabstop=2 shiftwidth=2 expandtab ai tw=100
 autocmd FileType systemverilog set tabstop=2 shiftwidth=2 expandtab ai tw=100
-autocmd BufRead,BufNew *.md,*.mkd,*.markdown  set filetype=markdown.mkd
+" autocmd BufRead,BufNew *.md,*.mkd,*.markdown  set filetype=markdown.mkd
 
 autocmd BufNewFile *.tex exec ":call TexAutoSetFileHead()"
 function! TexAutoSetFileHead()
@@ -174,40 +182,41 @@ function! TexAutoSetFileHead()
 	call setline(2+1, "\\usepackage{amsmath} % math fomula")
 	call setline(2+2, "\\usepackage{amssymb} % math fomula")
 	call setline(2+3, "\\usepackage{amsfonts}% math fonts")
-	call setline(2+4, "\\usepackage{upgreek} ")
-	call setline(2+5, "\\usepackage{bm} % bold math fomula")
-	call setline(2+6, "\\usepackage{xfrac} % frac in line")
-	call setline(2+7, "\\usepackage{graphicx} % intsert picture")
-	call setline(2+8, "\\usepackage{geometry} % page margins ")
-	call setline(2+9, "\\usepackage{fancyhdr} % header and foot")
-	call setline(2+10, "\\usepackage{setspace} % line distance")
-	call setline(2+11, "\\usepackage{ctex}")
-	call setline(2+12, "\\usepackage{caption} %Chinese and English caption")
-	call setline(2+13, "")
-	call setline(2+14, "%\\ctexset{today=old}")
-	call setline(2+15, "%\captionsetup{labelformat=default, labelsep=space}")
-	call setline(2+16, "")	
-	call setline(2+17, "\\title{}")
-	call setline(2+18, "\\author{黄键坤 2030826}")
-	call setline(2+19, "\\date{\\today}")
-	call setline(2+20, "")
-	call setline(2+21, "\\pagestyle{fancy}")
-	call setline(2+22, "\\lhead{黄键坤 2030826}")
-	call setline(2+23, "\\chead{\\bfseries Machine Learning$\quad$Assignment1}")
-	call setline(2+24, "\\rhead{\\today}")
-	call setline(2+25, "\\lfoot{}")
-	call setline(2+26, "\\cfoot{\\thepage}")
-	call setline(2+27, "\\rfoot{}")
-	call setline(2+28, "\\renewcommand{\\headrulewidth}{0.4pt}")
-	call setline(2+29, "%\\renewcommand{\\headwidth}{\\textwidth}")
-	call setline(2+30, "\\renewcommand{\\footrulewidth}{0pt}")
-	call setline(2+31, "\\onehalfspacing")
-	call setline(2+32, "")
-	call setline(2+33, "\\begin{document}")
-	call setline(2+34, "")
-	call setline(2+35, "    \\maketitle")
-	call setline(2+36, "")
-	call setline(2+37, "\\end{document}")
+	call setline(3+3, "\\usepackage{mathrsfs}% math fonts")
+	call setline(3+4, "\\usepackage{upgreek} ")
+	call setline(3+5, "\\usepackage{bm} % bold math fomula")
+	call setline(3+6, "\\usepackage{xfrac} % frac in line")
+	call setline(3+7, "\\usepackage{graphicx} % intsert picture")
+	call setline(3+8, "\\usepackage{geometry} % page margins ")
+	call setline(3+9, "\\usepackage{fancyhdr} % header and foot")
+	call setline(3+10, "\\usepackage{setspace} % line distance")
+	call setline(3+11, "\\usepackage{ctex}")
+	call setline(3+12, "\\usepackage{caption} %Chinese and English caption")
+	call setline(3+13, "")
+	call setline(3+14, "%\\ctexset{today=old}")
+	call setline(3+15, "%\captionsetup{labelformat=default, labelsep=space}")
+	call setline(3+16, "")	
+	call setline(3+17, "\\title{}")
+	call setline(3+18, "\\author{黄键坤 2030826}")
+	call setline(3+19, "\\date{\\today}")
+	call setline(3+20, "")
+	call setline(3+21, "\\pagestyle{fancy}")
+	call setline(3+22, "\\lhead{黄键坤 2030826}")
+	call setline(3+23, "\\chead{\\bfseries }")
+	call setline(3+24, "\\rhead{\\today}")
+	call setline(3+25, "\\lfoot{}")
+	call setline(3+26, "\\cfoot{\\thepage}")
+	call setline(3+27, "\\rfoot{}")
+	call setline(3+28, "\\renewcommand{\\headrulewidth}{0.4pt}")
+	call setline(3+29, "%\\renewcommand{\\headwidth}{\\textwidth}")
+	call setline(3+30, "\\renewcommand{\\footrulewidth}{0pt}")
+	call setline(3+31, "\\onehalfspacing")
+	call setline(3+32, "")
+	call setline(3+33, "\\begin{document}")
+	call setline(3+34, "")
+	call setline(3+35, "    \\maketitle")
+	call setline(3+36, "")
+	call setline(3+37, "\\end{document}")
 
     " normal G
     " normal k
@@ -298,7 +307,7 @@ map <C-l> <C-W>l
 inoremap kj <Esc>
 
 " Auto complete blanket
-inoremap ( ()<Left>
+" inoremap ( ()<Left>
 " inoremap < <><Left>
 inoremap { {}<Left>
 inoremap [ []<Left>
@@ -339,14 +348,19 @@ nnoremap <silent> <leader>sv :source $VIMFILES/_vimrc<CR>
 " remove highlight
 nnoremap <Esc> :noh<CR><Esc>
 
-
+" jump between the pair char
+nnoremap <Leader>M %
 
 "Reselect visual block after indent/outdent.调整缩进后自动选中，方便再次操作
 vnoremap < <gv
 vnoremap > >gv
 
 " y$ -> Y Make Y behave like other capitals
-map Y y$
+vnoremap Y y$
+
+" quickly copy and paste using the system register
+vnoremap <Leader>y "+y
+nnoremap <leader>p "+p
 
 "Map ; to : and save a million keystrokes
 " ex mode commands made easy 用于快速进入命令行

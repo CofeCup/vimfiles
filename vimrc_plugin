@@ -28,6 +28,8 @@ Plugin 'lervag/vimtex'
 Plugin 'sirver/ultisnips'
 Plugin 'honza/vim-snippets'
 "Plugin 'KeitaNakamura/tex-conceal.vim'
+Plugin 'godlygeek/tabular'
+Plugin 'plasticboy/vim-markdown'
 
 " dependent
 
@@ -187,3 +189,8 @@ inoremap <c-x><c-k> <c-x><c-k>
 " set conceallevel=1
 " let g:tex_conceal='abdmg'
 " hi Conceal ctermbg=none
+" ====================== vim-markdown Plugin config ==========================
+let g:vim_markdown_conceal = 0
+let g:tex_conceal = ""
+let g:vim_markdown_math = 1
+let g:vim_markdown_conceal_code_blocks = 0
