@@ -262,19 +262,18 @@ func! RTLAutoSetFileHead()
     let filename = expand("%")
     let user     = "jkhuang"
     " let user     = substitute(user, '\n', '','')
-    call setline(1,  "// -----------------------------------------------------------------")
-    call append(line("."),  "//                 Copyright (c) ". strftime("%Y ") . company . ".")
-    call append(line(".")+1,  "//                       ALL RIGHTS RESERVED")
-    call append(line(".")+2,  "// -----------------------------------------------------------------")
+    call setline(1,           "// -------------------------------------------------------------------------------------------------")
+    call append(line("."), "//                            Copyright (c) ". strftime("%Y ") . company . ".")
+    call append(line(".")+1, "//                                          ALL RIGHTS RESERVED")
+    call append(line(".")+2,  "// -------------------------------------------------------------------------------------------------")
     call append(line(".")+3,  "// Filename      : ". filename)
     call append(line(".")+4,  "// Author        : ". user)
     call append(line(".")+5,  "// Created On    : ". strftime("%Y-%m-%d"))
     call append(line(".")+6,  "// Version 1.1   : initial RTL, by ". user . " " . strftime("%Y-%m-%d"))
-    call append(line(".")+7,  "// -----------------------------------------------------------------")
+    call append(line(".")+7,  "// -------------------------------------------------------------------------------------------------")
     call append(line(".")+8,  "// Description   :")
-    call append(line(".")+9, "")
-    call append(line(".")+10, "")
-    call append(line(".")+11, "// -----------------------------------------------------------------")
+    call append(line(".")+9, "// -------------------------------------------------------------------------------------------------")
+    call append(line(".")+10,  "")
     normal G
     normal o
     normal o
@@ -382,7 +381,8 @@ cnoremap <C-e> <End>
 " ============================ Compiling Config ============================
 "
 " add python3.8 support in Vim
-let &pythonthreedll='C:\Users\CofeCup\AppData\Local\Programs\Python\Python38-32\python38.dll' 
+" let &pythonthreedll='C:\Users\CofeCup\AppData\Local\Programs\Python\Python38-32\python38.dll' 
+let &pythonthreedll='C:\Users\12159\AppData\Local\Programs\Python\Python39-32\python39.dll' 
 
 " F5 running python
 " map <F5> :call PRUN()<CR>
